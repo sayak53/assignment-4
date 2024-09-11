@@ -13,7 +13,7 @@ function calculateTax(income, expenses) {
 
 function sendNotification(email) {
     if(email.includes('@') == true){
-        const r = email.split('@')
+        const r = email.split('@');
         return r.join(' sent you an email from ')
     }
     else{
@@ -23,7 +23,7 @@ function sendNotification(email) {
 
 function checkDigitsInName(name) {
     if(typeof(name) == 'string'){
-        return /\d/.test(name)
+        return /\d/.test(name);
     }
     else{
         return 'Invalid Input'
@@ -34,7 +34,7 @@ function calculateFinalScore(obj) {
     let sum=0;
     if(typeof(obj)=='object'){
         if(obj.testScore<=50 && obj.schoolGrade<=30){
-           sum += obj.testScore + obj.schoolGrade
+           sum += obj.testScore + obj.schoolGrade;
              if(obj.isFFamily == true){
                 sum += 20
              }
@@ -52,5 +52,19 @@ function calculateFinalScore(obj) {
 }
 
 function  waitingTime(waitingTimes  , serialNumber) {
-    
+    let sum=0;
+    if( typeof(waitingTimes) == 'object' && typeof(serialNumber) == 'number'){
+       for(const time of waitingTimes){
+        sum += time;
+       }
+       let val1 = sum /waitingTimes.length;
+       val1Updated = Math.round(val1);
+
+       let val2 = serialNumber - 1 - waitingTimes.length;
+
+       return val1Updated * val2
+    }
+    else{
+        return 'Invalid Input'
+    }
 }
